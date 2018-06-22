@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import setStorage from './storage';
+
+setStorage(window);
 
 class App extends Component {
   render() {
