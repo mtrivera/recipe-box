@@ -1,26 +1,48 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Summary = styled.summary`
+  color: blue;
+`;
+
+const Paragraph = styled.p`
+  color: magenta;
+`;
+
+const UnorderedList = styled.ul`
+  color: green;
+`;
+
+const OrderedList = styled.ol`
+  color: violet;
+`;
+
+const Button = styled.button`
+  border: 1px solid orange;
+  color: blue;
+`;
 
 export default function Recipe(props) {
   return (
     <details>
-      <summary>{props.name}</summary>
-      <p className="recipe-content__servings-text">{props.servings}</p>
-      <p className="recipe-content__prep-overnight-text">Prep Overnight: {props.isOvernightPrep ? 'YES' : 'NO'}</p>
-      <p className="recipe-content__cook-overnight-text">Cook Overnight: {props.isOvernightCook ? 'YES' : 'NO'}</p>
-      <p className="recipe-content__prep-text">{props.prepTime}</p>
-      <p className="recipe-content__cook-text">{props.cookTime}</p>
-      <ul>
+      <Summary>{props.name}</Summary>
+      <Paragraph>{props.servings}</Paragraph>
+      <Paragraph>Prep Overnight: {props.isOvernightPrep ? 'YES' : 'NO'}</Paragraph>
+      <Paragraph>Cook Overnight: {props.isOvernightCook ? 'YES' : 'NO'}</Paragraph>
+      <Paragraph>{props.prepTime}</Paragraph>
+      <Paragraph>{props.cookTime}</Paragraph>
+      <UnorderedList>
         {props.ingredients.map(ingredient => (
           <li key={ingredient}>{ingredient}</li>
         ))}
-      </ul>
-      <ol>
+      </UnorderedList>
+      <OrderedList>
         {props.directions.map(direction => (
           <li key={direction}>{direction}</li>
         ))}
-      </ol>
-      <button className="recipe-content__edit-recipe-btn">Edit Recipe</button>
-      <button className="recipe-content__delete-recipe-btn">Delete Recipe</button>
+      </OrderedList>
+      <Button>Edit Recipe</Button>
+      <Button>Delete Recipe</Button>
     </details>
   );
 }
